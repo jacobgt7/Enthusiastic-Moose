@@ -1,7 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+
+
+var responses = new Dictionary<string, List<string>>()
+{
+    {"Canada", new List<string>(){"Really? It seems very unlikely.", "I  K N E W  I T !!!"}},
+    {"enthusiastic", new List<string>(){"Yay!", "You should try it!"}},
+    {"cSharp", new List<string>(){"Good job sucking up to your instructor!", "You will...oh, yes, you will..." }},
+    {"secret", new List<string>(){"ME TOO!!!! I love secrets...tell me one!", "Oh, no...secrets are the best, I love to share them!"}}
+};
 
 Main();
-
 
 void Main()
 {
@@ -12,61 +21,26 @@ void Main()
     MooseSays("H I, I'M  E N T H U S I A S T I C !");
     MooseSays("I really am enthusiastic");
 
-    CanadaQuestion();
-    EnthusiasticQuestion();
-    LoveCSharpQuestion();
-    SecretQuestion();
+    question("Is Canada real?", "Canada");
+    question("Are you enthusiastic?", "enthusiastic");
+    question("Do you love C# yet?", "cSharp");
+    question("Do you want to know a secret?", "secret");
 }
 
 
 
-void CanadaQuestion()
+void question(string question, string topic)
 {
-    if (MooseAsks("Is Canada real?"))
+    if (MooseAsks(question))
     {
-        MooseSays("Really? It seems very unlikely.");
+        MooseSays(responses[topic][0]);
     }
     else
     {
-        MooseSays("I  K N E W  I T !!!");
+        MooseSays(responses[topic][1]);
     }
 }
 
-void EnthusiasticQuestion()
-{
-    if (MooseAsks("Are you enthusiastic?"))
-    {
-        MooseSays("Yay!");
-    }
-    else
-    {
-        MooseSays("You should try it!");
-    }
-}
-
-void LoveCSharpQuestion()
-{
-    if (MooseAsks("Do you love C# yet?"))
-    {
-        MooseSays("Good job sucking up to your instructor!");
-    }
-    else
-    {
-        MooseSays("You will...oh, yes, you will...");
-    }
-}
-
-void SecretQuestion()
-{
-    if (MooseAsks("Do you want to know a secret?"))
-    {
-        MooseSays("ME TOO!!!! I love secrets...tell me one!");
-    }
-    else
-    {
-        MooseSays("Oh, no...secrets are the best, I love to share them!");
-    }
-}
 
 void MooseSays(string message)
 {
